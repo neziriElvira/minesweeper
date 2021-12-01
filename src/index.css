@@ -1,13 +1,163 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 20px;
+  padding: 0;
+  font-family: sans-serif;
+  background: #256457;
+}
+
+.clear {
+  clear: both;
+  content: "";
+}
+
+.game {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 80vh;
+}
+
+.game-title {
+  padding: 7px;
+  text-align: center;
+  background: url('https://originalbout.news/6573-1-large_default/Novi-Valentinovo-slike-pozadina-je-svijetla-mrlja-pozadina-slike-pozadine-pol-3x3m-foto-studio-pozad.jpg');
+  background-size: cover;
+  font-size: 60px;
+  font-weight: 700;
+  font-family: 'Rancho', cursive;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  }
+
+.glow-on-hover {
+  width: 220px;
+  height: 50px;
+  border: none;
+  outline: none;
+  color: rgb(13, 40, 41);
+  background-color: rgb(201, 238, 255);
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  margin: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: rgb(201, 238, 255)
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(201, 238, 255);
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+.board {
+  height: 330px;
+  width: 330px;
+  background-color: #256457;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+    
+.mine-count {
+  margin: 5px;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Rancho', cursive;
+}
+  
+.cell {
+  background-image:linear-gradient(to left, #418d7c, #ffffffc0 ) ;
+  border: 1px solid rgb(0, 0, 0);
+  float: left;
+  line-height: 45px;
+  height: 45px;
+  text-align: center;
+  width: 45px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  }
+
+
+.hidden {
+  background: #ffffff;
+  }
+
+.is-flag {
+  color: #cc0101;
+  background-color: #6bb4a2;
+}
+
+.is-flag,
+.is-mine {
+  color: #cc0101;
+  }
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 100;
+  z-index: 4;
+  height: 70%;
+  max-width: 100%;
+  margin: 50px 50px;
+  padding-top: 20px;
 }
