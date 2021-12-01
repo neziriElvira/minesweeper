@@ -4,7 +4,7 @@ import Cell from './Cell';
 import revealed from '../utils/Reveal';
 import Endgame from './Endgame';
 
-const Board = () => {
+const Board = ({ height, width, mines }) => {
     const [grid, setGrid] = useState([]);
     const [mineCount, setMineCount] = useState(10);
     const [nonMineCount, setNonMineCount] = useState(54);
@@ -19,8 +19,8 @@ const Board = () => {
     };
 
     const freshBoard = () => {
-        const newBoard = CreateBoard(8, 8, 10);
-        setNonMineCount(8 * 8 - 10);
+        const newBoard = CreateBoard(height, width, mines);
+        setNonMineCount(height * width - mines);
         setMineCount(10);
         setMineLocations(newBoard.mineLocation);
         setGrid(newBoard.board);
