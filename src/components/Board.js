@@ -92,7 +92,7 @@ const Board = () => {
             }
             <div className="board">
                 {!hideShowButton &&
-                    <div className="mine-count">Mines: {mineCount}</div>
+                    <div className="mine-count">Mines remaining: {mineCount}</div>
                 }
                 {grid.map((singleRow, index1) => {
                     return (
