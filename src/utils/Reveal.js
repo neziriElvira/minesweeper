@@ -1,4 +1,4 @@
-const revealed = (arr, x, y, newNonMines) => {
+const revealed = (arr, x, y, newNonMines, newMineCount) => {
 
     // all the cells which are adjaced to zero must be stored in the array 
     // so that it can be revealed later
@@ -109,6 +109,9 @@ const revealed = (arr, x, y, newNonMines) => {
             !arr[i - 1][j - 1].revealed
         ) {
             //Top Left Reveal
+            if (arr[i - 1][j - 1].flagged) {
+                newMineCount++;
+            }
 
             arr[i - 1][j - 1].revealed = true;
             newNonMines--;
@@ -116,6 +119,9 @@ const revealed = (arr, x, y, newNonMines) => {
 
         if (j > 0 && !arr[i][j - 1].revealed) {
             // Left Reveal
+            if (arr[i][j - 1].flagged) {
+                newMineCount++;
+            }
             arr[i][j - 1].revealed = true;
             newNonMines--;
         }
@@ -126,18 +132,28 @@ const revealed = (arr, x, y, newNonMines) => {
             !arr[i + 1][j - 1].revealed
         ) {
             //Bottom Left Reveal
+            if (arr[i + 1][j - 1].flagged) {
+                newMineCount++;
+            }
             arr[i + 1][j - 1].revealed = true;
             newNonMines--;
         }
 
-        if (i > 0 && !arr[i - 1][j].revealed) {
+        if (i > 0 &&
+            !arr[i - 1][j].revealed) {
             //Top Reveal
+            if (arr[i - 1][j].flagged) {
+                newMineCount++;
+            }
             arr[i - 1][j].revealed = true;
             newNonMines--;
         }
 
         if (i < arr.length - 1 && !arr[i + 1][j].revealed) {
             // Bottom Reveal
+            if (arr[i + 1][j].flagged) {
+                newMineCount++;
+            }
             arr[i + 1][j].revealed = true;
             newNonMines--;
         }
@@ -148,14 +164,21 @@ const revealed = (arr, x, y, newNonMines) => {
             !arr[i - 1][j + 1].revealed
         ) {
             // Top Right Reveal
+            if (arr[i - 1][j + 1].flagged) {
+                newMineCount++;
+            }
             arr[i - 1][j + 1].revealed = true;
             newNonMines--;
         }
 
-        if (j < arr[0].length - 1 && !arr[i][j + 1].revealed) {
+        if (j < arr[0].length - 1 &&
+            !arr[i][j + 1].revealed) {
             //Right Reveal
+            if (arr[i][j + 1].flagged) {
+                newMineCount++;
+            }
             arr[i][j + 1].revealed = true;
-            newNonMines--;
+            newNonMines++;
         }
 
         if (
@@ -164,12 +187,15 @@ const revealed = (arr, x, y, newNonMines) => {
             !arr[i + 1][j + 1].revealed
         ) {
             // Bottom Right Reveal
+            if (arr[i + 1][j + 1].flagged) {
+                newMineCount++;
+            }
             arr[i + 1][j + 1].revealed = true;
             newNonMines--;
         }
     }
 
-    return { arr, newNonMines }
+    return { arr, newNonMines, newMineCount }
 
 }
 

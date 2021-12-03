@@ -39,22 +39,23 @@ const Board = ({ height, width, mines }) => {
         if (newGrid[x][y].revealed) {
             return;
         }
-        if (newGrid[x][y].flagged === false) {
+        if (!newGrid[x][y].flagged && mineCount > 0) {
             newGrid[x][y].flagged = true;
             setMineCount(mineCount - 1);
-        } else {
+        } else if (newGrid[x][y].flagged) {
             newGrid[x][y].flagged = false;
             setMineCount(mineCount + 1);
         }
         setGrid(newGrid);
-
     };
 
     const revealBoard = () => {
         let revealedGrid = grid;
         revealedGrid.map((gridRow) => {
             gridRow.map((gridItem) => {
-                gridItem.revealed = true;
+                if (!gridItem.flagged) {
+                    gridItem.revealed = true;
+                }
             });
         });
         setGrid(revealedGrid);
@@ -74,9 +75,10 @@ const Board = ({ height, width, mines }) => {
             setGameOver(true);
             setResult('You lose! ');
         } else {
-            let newRevealedBoard = revealed(newGrid, x, y, nonMineCount);
+            let newRevealedBoard = revealed(newGrid, x, y, nonMineCount, mineCount);
             setGrid(newRevealedBoard.arr);
             setNonMineCount(newRevealedBoard.newNonMines);
+            setMineCount(newRevealedBoard.newMineCount);
             if (newRevealedBoard.newNonMines === 0) {
                 setGameOver(true);
                 setResult('You win! ');

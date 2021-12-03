@@ -141,11 +141,9 @@ body {
   }
 
 .is-flag {
-  color: #cc0101;
   background-color: #6bb4a2;
 }
 
-.is-flag,
 .is-mine {
   color: #cc0101;
   }
