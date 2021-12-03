@@ -20,7 +20,6 @@ const Cell = ({ details, revealCell, updateFlag }) => {
     let className =
         "cell" +
         (details.revealed ? "" : " hidden") +
-        (details.value === 'X' ? " is-mine" : "") +
         (details.flagged ? " is-flag" : "");
 
     return (

@@ -144,10 +144,6 @@ body {
   background-color: #6bb4a2;
 }
 
-.is-mine {
-  color: #cc0101;
-  }
-
 .modal {
   display: flex;
   align-items: center;

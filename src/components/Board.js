@@ -53,7 +53,7 @@ const Board = ({ height, width, mines }) => {
         let revealedGrid = grid;
         revealedGrid.map((gridRow) => {
             gridRow.map((gridItem) => {
-                if (!gridItem.flagged) {
+                if (!gridItem.flagged || gridItem.value !== 'X') {
                     gridItem.revealed = true;
                 }
             });
