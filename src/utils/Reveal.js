@@ -178,7 +178,7 @@ const revealed = (arr, x, y, newNonMines, newMineCount) => {
                 newMineCount++;
             }
             arr[i][j + 1].revealed = true;
-            newNonMines++;
+            newNonMines--;
         }
 
         if (

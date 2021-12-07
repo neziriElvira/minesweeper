@@ -20,7 +20,7 @@ export default function Endgame({ restartGame, result }) {
         >
             <div className="modal">
                 <div className="glow-on-hover div" onClick={() => restartGame()}>
-                    {result} Try Again
+                    {result}
                 </div>
             </div>
         </div>

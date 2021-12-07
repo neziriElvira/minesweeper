@@ -73,7 +73,7 @@ const Board = ({ height, width, mines }) => {
             setGrid(newGrid);
             revealBoard();
             setGameOver(true);
-            setResult('You lose! ');
+            setResult('You lose! Try again');
         } else {
             let newRevealedBoard = revealed(newGrid, x, y, nonMineCount, mineCount);
             setGrid(newRevealedBoard.arr);
@@ -81,8 +81,9 @@ const Board = ({ height, width, mines }) => {
             setMineCount(newRevealedBoard.newMineCount);
             if (newRevealedBoard.newNonMines === 0) {
                 setGameOver(true);
-                setResult('You win! ');
+                setResult('You win! Start New game');
             }
+            console.log(newRevealedBoard.newNonMines);
         }
     };
 
